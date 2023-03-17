@@ -1,0 +1,9 @@
+_openzfs_packages:
+  debian:
+    - dpkg-dev
+    - linux-headers-generic
+    - linux-image-generic
+    - zfs-dkms
+    - zfsutils-linux
+
+openzfs_packages: "{{ _openzfs_packages[ansible_distribution | lower] | default(_openzfs_packages[ansible_os_family | lower]) | default([]) }}"

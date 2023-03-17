@@ -1,0 +1,24 @@
+---
+- name: Set up ZFS load encryption keys
+  become: true
+  ansible.builtin.copy:
+    src: zfs-load-key.service
+    dest: /etc/systemd/system/zfs-load-key.service
+    mode: '0644'
+
+- name: Enable ZFS load encryption keys
+  become: true
+  ansible.builtin.systemd:
+    name: zfs-load-key.service
+    state: started
+    enabled: true
+    daemon_reload: true
+
+- name: Enable zfs-mount.service
+  become: true
+  ansible.builtin.systemd:
+    name: zfs-mount.service
+    state: started
+    enabled: true
+
+...
