@@ -28,6 +28,7 @@ Role Variables
 
 Variable | Default | Description
 --- | --- | ---
+`openzfs_enable_load_keys_service` | `false` | Enable the `zfs-load-key.service` service
 <!--
 `variable` | `default` | Variable example
 `long_variable` | See [defaults/main.yml](./defaults/main.yml) | Variable referring to defaults

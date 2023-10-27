@@ -13,6 +13,7 @@
     state: started
     enabled: true
     daemon_reload: true
+  when: openzfs_enable_load_keys_service
 
 - name: Enable zfs-mount.service
   become: true

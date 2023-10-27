@@ -1,3 +1,4 @@
 ---
+openzfs_enable_load_keys_service: false
 
 ...
