@@ -28,7 +28,4 @@
     state: present
     update_cache: true
 
-- name: Import common/setup.yml
-  ansible.builtin.include_tasks: common/setup.yml
-
 ...

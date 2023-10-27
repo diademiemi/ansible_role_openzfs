@@ -1,0 +1,18 @@
+---
+- name: Remove zfs-fuse packages
+  become: true
+  ansible.builtin.dnf:
+    name: zfs-fuse
+    state: absent
+
+- name: Add zfs-fuse repository
+  become: true
+  ansible.builtin.yum_repository:
+    name: zfs-fuse
+    description: ZFS on Linux for Fedora Linux
+    baseurl: http://download.zfsonlinux.org/fedora/$releasever/$basearch/
+    gpgcheck: true
+    enabled: true
+    gpgkey: "{{ openzfs_gpg_key_url }}"
+
+...

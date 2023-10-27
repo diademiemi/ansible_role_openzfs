@@ -1,0 +1,30 @@
+---
+- name: Remove zfs-fuse packages
+  become: true
+  ansible.builtin.dnf:
+    name: zfs-fuse
+    state: absent
+
+- name: Import EPEL role
+  ansible.builtin.include_role:
+    name: diademiemi.epel
+
+- name: Add zfs-fuse repository
+  become: true
+  ansible.builtin.yum_repository:
+    name: zfs-fuse
+    description: ZFS on Linux for Fedora Linux
+    baseurl: http://download.zfsonlinux.org/epel/$releasever/$basearch/
+    gpgcheck: true
+    enabled: true
+    gpgkey: "{{ openzfs_gpg_key_url }}"
+
+- name: Install zfs
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - kernel-devel
+      - zfs
+    state: present
+
+...
