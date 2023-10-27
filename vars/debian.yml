@@ -1,0 +1,6 @@
+---
+openzfs_packages:
+  - zfs-dkms
+  - zfsutils-linux
+
+...

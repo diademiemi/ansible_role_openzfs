@@ -5,7 +5,7 @@ Ansible Role Template
 
 This is an Ansible role to install and configure openzfs.
 
-Include more information about openzfs in this section.
+For Debian-based distros, a working DKMS is assumed.
 
 Requirements
 ------------
