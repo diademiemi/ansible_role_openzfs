@@ -1,0 +1,6 @@
+---
+openzfs_packages:
+  - kernel-devel
+  - zfs
+
+...

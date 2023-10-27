@@ -9,7 +9,7 @@
   ansible.builtin.include_role:
     name: diademiemi.epel
 
-- name: Add zfs-fuse repository
+- name: Add zfs repository
   become: true
   ansible.builtin.yum_repository:
     name: zfs-fuse
@@ -22,9 +22,7 @@
 - name: Install zfs
   become: true
   ansible.builtin.dnf:
-    name:
-      - kernel-devel
-      - zfs
+    name: "{{ openzfs_packages }}"
     state: present
 
 ...

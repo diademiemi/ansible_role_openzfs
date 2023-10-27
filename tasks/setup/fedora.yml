@@ -5,14 +5,20 @@
     name: zfs-fuse
     state: absent
 
-- name: Add zfs-fuse repository
+- name: Add zfs repository
   become: true
   ansible.builtin.yum_repository:
-    name: zfs-fuse
+    name: zfs
     description: ZFS on Linux for Fedora Linux
     baseurl: http://download.zfsonlinux.org/fedora/$releasever/$basearch/
     gpgcheck: true
     enabled: true
     gpgkey: "{{ openzfs_gpg_key_url }}"
+
+- name: Install zfs
+  become: true
+  ansible.builtin.yum:
+    name: "{{ openzfs_packages }}"
+    state: present
 
 ...
