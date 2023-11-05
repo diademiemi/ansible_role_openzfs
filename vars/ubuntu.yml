@@ -1,0 +1,5 @@
+---
+openzfs_packages:
+  - zfsutils-linux
+
+...

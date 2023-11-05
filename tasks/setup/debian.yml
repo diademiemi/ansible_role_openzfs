@@ -2,13 +2,13 @@
 - name: Add backports repository
   become: true
   ansible.builtin.apt_repository:
-    repo: deb https://deb.debian.org/debian bullseye-backports main contrib
+    repo: deb https://deb.debian.org/debian {{ ansible_distribution_release }}-backports main contrib
     state: present
 
 - name: Add backports src repository
   become: true
   ansible.builtin.apt_repository:
-    repo: deb-src https://deb.debian.org/debian bullseye-backports main contrib
+    repo: deb-src https://deb.debian.org/debian {{ ansible_distribution_release }}-backports main contrib
     state: present
 
 - name: Set zfs-linux preference
@@ -16,7 +16,7 @@
   ansible.builtin.copy:
     content: |
       Package: src:zfs-linux
-      Pin: release n=bullseye-backports
+      Pin: release n={{ ansible_distribution_release }}-backports
       Pin-Priority: 990
     dest: /etc/apt/preferences.d/90_zfs
     mode: '0644'
